@@ -49,7 +49,7 @@
 				       DSHOT_PRE_FRAME_SILENT_SYNC_BITS + \
 				       DSHOT_POST_FRAME_SILENT_SYNC_BITS )
 
-#define DSHOT_CHANNELS                4 // depend on the number of channels per timer
+#define DSHOT_CHANNELS                2 // depend on the number of channels per timer
 
 /**
  * @brief   special value for index : send order to all channels

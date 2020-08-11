@@ -121,9 +121,9 @@ static size_t getTimerWidth(const PWMDriver *pwmp);
  */
 void dshotStart(DSHOTDriver *driver, const DSHOTConfig *config)
 {
-  _Static_assert((void *) &driver->dsdb == (void *) &driver->dsdb.widths16);
-  _Static_assert((void *) &driver->dsdb.widths32 == (void *) &driver->dsdb.widths16);
-  
+  /*_Static_assert((void *) &driver->dsdb == (void *) &driver->dsdb.widths16);*/
+  /*_Static_assert((void *) &driver->dsdb.widths32 == (void *) &driver->dsdb.widths16);*/
+
   memset((void *) &driver->dsdb, 0, sizeof(driver->dsdb));
   const size_t timerWidthInBytes = getTimerWidth(config->pwmp);
 
@@ -196,6 +196,7 @@ void dshotStart(DSHOTDriver *driver, const DSHOTConfig *config)
   driver->config->pwmp->tim->DCR = DCR_DBL | DCR_DBA(driver->config->pwmp); // enable bloc register DMA transaction
   pwmChangePeriod(driver->config->pwmp, DSHOT_PWM_PERIOD);
 
+  driver->dshotMotors.onGoingQry = false;
   for (size_t j = 0; j < DSHOT_CHANNELS; j++) {
     pwmEnableChannel(driver->config->pwmp, j, 0);
     driver->dshotMotors.dp[j] =  makeDshotPacket(0, 0);
