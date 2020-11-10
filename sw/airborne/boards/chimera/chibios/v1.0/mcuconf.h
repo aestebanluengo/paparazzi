@@ -213,7 +213,7 @@
 #define STM32_I2C_BUSY_TIMEOUT              50
 #define STM32_I2C_I2C1_RX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 0)
 #define STM32_I2C_I2C1_TX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 6)
-#define STM32_I2C_I2C2_RX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 3)
+#define STM32_I2C_I2C2_RX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 2)
 #define STM32_I2C_I2C2_TX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 7)
 //#define STM32_I2C_I2C3_RX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 2)
 //#define STM32_I2C_I2C3_TX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 4)
@@ -259,11 +259,6 @@
 #define STM32_ICU_TIM8_IRQ_PRIORITY         7
 #define STM32_ICU_TIM9_IRQ_PRIORITY         7
 
-#define STM32_PWM3_UP_DMA_STREAM            STM32_DMA_STREAM_ID(1, 2)
-#define STM32_PWM3_UP_DMA_CHANNEL           5
-#define STM32_PWM3_UP_DMA_IRQ_PRIORITY      6
-#define STM32_PWM3_UP_DMA_PRIORITY          2
-
 /*
  * MAC driver system settings.
  */
@@ -303,7 +298,7 @@
 /*
  * SERIAL driver system settings.
  */
-#if TRUE //USE_UART1
+#if USE_UART1
 #define STM32_SERIAL_USE_USART1             TRUE
 #else
 #define STM32_SERIAL_USE_USART1             FALSE
