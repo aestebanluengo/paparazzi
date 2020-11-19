@@ -66,8 +66,10 @@
   <section name="AUTOPILOT">
     <!--define name="MODE_MANUAL"  value="AP_MODE_ATTITUDE_DIRECT"/-->
     <define name="MODE_MANUAL"  value="AP_MODE_MODULE"/>
-    <define name="MODE_AUTO1" value="AP_MODE_FORWARD"/>
-    <define name="MODE_AUTO2"  value="AP_MODE_NAV"/>
+    <!--define name="MODE_AUTO1" value="AP_MODE_FORWARD"/-->
+    <define name="MODE_AUTO1" value="AP_MODE_ATTITUDE_DIRECT"/>
+    <!--define name="MODE_AUTO2"  value="AP_MODE_NAV"/-->
+    <define name="MODE_AUTO2"  value="AP_MODE_FORWARD"/>
     <define name="MODE_STARTUP"  value="AP_MODE_NAV"/>
   </section>
 
@@ -225,6 +227,7 @@
     </target>
 
     <module name="sys_id_base"/>
+    <module name="sys_id_cl"/>
 
     <!--module name="gps" type="ubx_ucenter">
       <define name="DEBUG_GPS_UBX_UCENTER" value="TRUE" />

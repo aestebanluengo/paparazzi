@@ -146,6 +146,9 @@ int32_t num_thrusters;
 struct Int32Eulers stab_att_sp_euler;
 struct Int32Quat   stab_att_sp_quat;
 
+struct FloatEulers stab_att_sp_euler_float;
+struct FloatQuat stab_att_sp_quat_float;
+
 abi_event rpm_ev;
 static void rpm_cb(uint8_t sender_id, uint16_t *rpm, uint8_t num_act);
 
@@ -313,6 +316,20 @@ void stabilization_indi_set_rpy_setpoint_i(struct Int32Eulers *rpy)
   stab_att_sp_euler = *rpy;
 
   int32_quat_of_eulers(&stab_att_sp_quat, &stab_att_sp_euler);
+}
+
+/**
+ * @param rpy rpy from which to calculate quaternion setpoint with ZXY rotation
+ *
+ * Function that calculates the setpoint quaternion from rpy with ZXY rotation
+ */
+void stabilization_indi_set_rpy_setpoint_i_zxy(struct FloatEulers *rpy)
+{
+  // stab_att_sp_euler.psi still used in ref..
+  stab_att_sp_euler_float = *rpy;
+
+  float_quat_of_eulers_zxy(&stab_att_sp_quat_float, &stab_att_sp_euler_float);
+  QUAT_BPF_OF_REAL(stab_att_sp_quat,stab_att_sp_quat_float);
 }
 
 /**
